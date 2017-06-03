@@ -51,10 +51,6 @@ while [[ $# -gt 0 ]]
 do
     key="$1"
     case $key in
-        --test)
-            TEST=true
-        ;;
-
         --clean)
             CLEAN=true
         ;;
@@ -71,11 +67,6 @@ do
 
     shift
 done
-
-if $TEST; then
-    cd src
-    lua minagi/util/test/table.lua
-fi
 
 if $CLEAN; then
     config_clean
