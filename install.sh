@@ -50,6 +50,7 @@ TEST=false
 while [[ $# -gt 0 ]]
 do
     key="$1"
+
     case $key in
         --clean)
             CLEAN=true
