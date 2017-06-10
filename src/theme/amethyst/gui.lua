@@ -82,6 +82,21 @@ do
       minagi.gui.add_shared(vol)
    end
 
+   local add_clock_widget = function(minagi)
+      local cl = widget.clock({},
+         {
+            c = {
+               fg = style.c.fg_def,
+               bg = style.c.bg_2
+            },
+            p = {
+               t = 2
+            }
+         }
+      )
+      minagi.gui.add_shared(cl)
+   end
+
    local add_wibox = function(minagi)
       awful.screen.connect_for_each_screen(
          function(s)
@@ -195,7 +210,9 @@ do
       minagi.target.add("conf.gui", add_girl_image)
       minagi.target.add("conf.gui", add_cpu_widget)
 
+      minagi.target.add("conf.gui", add_clock_widget)
       minagi.target.add("conf.gui", add_volume_widget)
+
       minagi.target.add("conf.gui", add_wibox)
    end
 end

@@ -126,7 +126,7 @@ do
          widget            = nil
       }
 
-      -- timer declaration
+      -- timer definition
       table.insert(
          widget_definition.timer_definitions,
          {

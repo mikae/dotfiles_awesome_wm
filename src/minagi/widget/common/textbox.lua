@@ -52,7 +52,6 @@ do
          h = nil,
          align = "left",
          expand = true,
-         wrap     = "nowrap",
          c = {
             fg    = "#FF0000",
             bg    = "#000000"
@@ -70,7 +69,6 @@ do
    local textbox = {
       mt = {}
    }
-
 
    -- constructor
    local new = function(preferred_style)
