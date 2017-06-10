@@ -11,7 +11,7 @@ do
       return {
          w = nil,
          h = nil,
-         m = {
+         p = {
             t = 0,
             r = 5,
             b = 0,
@@ -45,10 +45,10 @@ do
 
       local mcontainer = wibox.container.margin(
          wg_txt,
-         style.m.l,
-         style.m.r,
-         style.m.t,
-         style.m.b
+         style.p.l,
+         style.p.r,
+         style.p.t,
+         style.p.b
       )
 
       mcontainer:connect_signal(

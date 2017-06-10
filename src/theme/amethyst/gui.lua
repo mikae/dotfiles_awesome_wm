@@ -90,7 +90,7 @@ do
                bg = style.c.bg_2
             },
             p = {
-               t = 2
+               t = 3
             }
          }
       )
@@ -131,6 +131,9 @@ do
                            fg = style.c.fg_sel,
                            bg = style.c.bg_2
                         }
+                     },
+                     p = {
+                        t = 2
                      }
                   }
                }
@@ -166,6 +169,9 @@ do
                            fg = style.c.fg_sel,
                            bg = style.c.bg_2
                         }
+                     },
+                     p = {
+                        t = 2
                      }
                   }
                }
@@ -190,7 +196,7 @@ do
                screen_index    = screen_index,
                position        = "bottom",
                layout          = wibox.layout.align.horizontal,
-               height          = 23,
+               height          = 25,
                cont_1          = cont_1,
                cont_2          = cont_2,
                cont_3          = cont_3,
