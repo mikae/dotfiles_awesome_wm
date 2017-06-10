@@ -20,11 +20,16 @@ do
    local add_floating_rule = function(minagi)
       minagi.rule.add {
          rule_any = {
+            instance = {
+               "DTA"
+            },
             class = {
-               "Tor Browser"
+               "Tor Browser",
+               "Dwarf_Fortress"
             },
             name = {
-               "ACYLS"
+               "ACYLS",
+               "DownThemAll! - Make Your Selection"
             }
          },
          properties = {
