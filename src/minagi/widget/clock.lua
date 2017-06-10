@@ -39,7 +39,7 @@ do
       local _separator_left   = _options.separator_left  or ""
       local _separator_right  = _options.separator_right or " "
 
-      local _time_format      = _options.time_format     or "%H:%M:%S"
+      local _time_format      = _options.time_format     or "%H:%M"
       local _update_interval  = _options.update_interval or 1
 
       -- Widgets
