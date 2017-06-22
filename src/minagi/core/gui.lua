@@ -35,7 +35,7 @@ do
 
                   minagi._screen_states[screen_index] = screen_state
 
-                  minagi.screen.recreate_tags(screen_index)
+                  minagi.tag.recreate(screen_index)
                   minagi.tag.focus_first_tag_of_screen(screen_index)
                end
             )

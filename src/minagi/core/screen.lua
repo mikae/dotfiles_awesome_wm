@@ -128,27 +128,14 @@ do
          focus_screen_by_index(selector_index)
       end
 
-      local recreate_tags = function(scr_ind)
-         local scr_real_ind = minagi.screen.screen_real_index(scr_ind)
-         local screen_state = minagi._screen_states[scr_ind]
-
-         local tag_states = screen_state.tag_states
-
-         util.table.forind(
-            tag_states,
-            function(tag_state)
-               tag_state.tag = awful.tag.add(
-                  tag_state.name,
-                  {
-                     screen = scr_real_ind,
-                     layout = awful.layout.suit.tile
-                  }
-               )
-            end
-         )
-      end
 
       return {
+         start_x                   = start_x,
+         start_y                   = start_y,
+         width                     = width,
+         height                    = height,
+         screen_state              = screen_state,
+
          focus_top                 = util.func.bind(focus_screen_by_selector, {screen_top_index}),
          focus_right               = util.func.bind(focus_screen_by_selector, {screen_right_index}),
          focus_bottom              = util.func.bind(focus_screen_by_selector, {screen_bottom_index}),
@@ -168,8 +155,6 @@ do
          focus_screen_8            = util.func.bind(focus_screen_by_index, {8}),
          focus_screen_9            = util.func.bind(focus_screen_by_index, {9}),
 
-         recreate_tags             = recreate_tags,
-
          focused_screen_state      = focused_screen_state,
          focused_screen_index      = focused_screen_index,
          focused_screen_real_index = focused_screen_real_index,
@@ -182,11 +167,6 @@ do
          screen_left_index         = screen_left_index,
 
          screen_count              = screen_count,
-
-         start_x                   = start_x,
-         start_y                   = start_y,
-         width                     = width,
-         height                    = height
       }
    end
 end

@@ -15,12 +15,17 @@ do
       local configure_virtual_screen = function(virtual_screen_configuration)
          if not is_virtual_screen(virtual_screen_configuration) then
             error("Attempt to configure not virtual screen as virtual screen")
+            return
          end
+
+         local command = string.format(
+         )
       end
 
       local configure_real_screen = function(real_screen_configuration)
          if not is_real_screen(real_screen_configuration) then
             error("Attempt to configure not real screen as real screen")
+            return
          end
 
          local command = string.format(

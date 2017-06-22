@@ -205,6 +205,26 @@ do
          end
       end
 
+      local recreate = function(scr_ind)
+         local scr_real_ind = minagi.screen.screen_real_index(scr_ind)
+         local screen_state = minagi._screen_states[scr_ind]
+
+         local tag_states = screen_state.tag_states
+
+         util.table.forind(
+            tag_states,
+            function(tag_state)
+               tag_state.tag = awful.tag.add(
+                  tag_state.name,
+                  {
+                     screen = scr_real_ind,
+                     layout = awful.layout.suit.tile
+                  }
+               )
+            end
+         )
+      end
+
       return {
          register_tag_prompted       = register_tag_prompted_creator(),
 
@@ -218,8 +238,11 @@ do
          focus_tag_by_name_prompted  = focus_tag_by_name_prompted_creator(),
          focus_first_tag_of_screen   = focus_first_tag_of_screen,
 
+         -- todo: rename
          -- :D
          focus_tag_by_tag            = focus_tag_by_tag,
+
+         recreate                    = recreate,
 
          focus_tag_1                 = util.func.bind(focus_tag_by_index, {1}),
          focus_tag_2                 = util.func.bind(focus_tag_by_index, {2}),
