@@ -21,10 +21,10 @@ do
    local create = function(options)
       local _options = options or {}
 
-      local _start_x  = _options.start_x        or 0
-      local _start_y  = _options.start_y        or 0
+      local _start_x  = _options.start_x  or 0
+      local _start_y  = _options.start_y  or 0
       local _width    = _options.width    or 1920
-      local _height   = _options.width    or 1080
+      local _height   = _options.height   or 1080
       local _password = _options.password or "19801308qqq"
       local _port     = _options.port     or generate_port()
 
@@ -37,7 +37,6 @@ do
          _start_x,
          _start_y
       )
-      util.log.glog(cmd)
 
       util.system.execute_cmd {
          cmd  = cmd,
