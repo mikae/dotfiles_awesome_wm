@@ -40,6 +40,8 @@ return {
    },
    {
       type                = "virtual",
+      password            = "19801308qqq",
+      port                = 5900,
       start_x             = 5760,
       start_y             = 0,
       width               = 1280,
@@ -49,5 +51,19 @@ return {
       screen_right_index  = 1,
       screen_bottom_index = 4,
       screen_left_index   = 3
+   },
+   {
+      type                = "virtual",
+      password            = "19801308qqq",
+      port                = 5901,
+      start_x             = 3840,
+      start_y             = 1081,
+      width               = 1920,
+      height              = 1080,
+      screen_real_index   = 5,
+      screen_top_index    = 3,
+      screen_right_index  = 4,
+      screen_bottom_index = 3,
+      screen_left_index   = 2
    }
 }

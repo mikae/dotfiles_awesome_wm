@@ -2,6 +2,7 @@ do
    local string = string
 
    local util = require("minagi.util")
+   local vnc  = require("minagi.module.vnc")
 
    return function(minagi)
       local configuration = minagi.configuration()
@@ -67,20 +68,42 @@ do
             60
          )
 
-         -- Create mode
+         -- Create mode && add mode to output && set output's mode
          local command = string.format(
-            "xrandr --newmode %s && xrandr --addmode %s %s",
-            modeline,
-            output_name,
-            modelabel
+            "xrandr --newmode %s",
+            modeline
          )
          util.system.execute_cmd {
             cmd = command,
             wait = true
          }
+
+         command = string.format(
+            "xrandr --addmode %s %s && xrandr --output %s --auto --mode %s --pos %dx%d",
+            output_name,
+            modelabel,
+            output_name,
+            modelabel,
+            virtual_screen_configuration.start_x,
+            virtual_screen_configuration.start_y
+         )
+         util.system.execute_cmd {
+            cmd = command,
+            wait = true
+         }
+         vnc.create {
+            start_x = virtual_screen_configuration.start_x,
+            start_y = virtual_screen_configuration.start_y,
+            width = virtual_screen_configuration.width,
+            height = virtual_screen_configuration.height,
+            password = virtual_screen_configuration.password,
+            port = virtual_screen_configuration.port
+         }
       end
 
       local configure_screens = function()
+         vnc.stop_all()
+
          for _, screen_configuration in ipairs(configuration.screens) do
             if is_virtual_screen(screen_configuration) then
                configure_virtual_screen(screen_configuration)
