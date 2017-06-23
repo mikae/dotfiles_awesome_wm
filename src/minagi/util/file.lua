@@ -14,8 +14,30 @@ do
       handler:close()
    end
 
+   -- Read word from file descriptor
+   local skip_word = function(fd)
+      local str = nil
+
+      if fd then
+         local char
+         str = ""
+         while true do
+            char = fd:read(1)
+
+            if char == nil or char == " " or char == "\n" or char == "\t" then
+               break
+            end
+
+            str = str .. char
+         end
+      end
+
+      return str
+   end
+
    return {
       write               = write,
-      read_file_as_string = read_file_as_string
+      read_file_as_string = read_file_as_string,
+      skip_word           = skip_word
    }
 end

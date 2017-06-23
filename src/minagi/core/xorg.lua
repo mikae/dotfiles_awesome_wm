@@ -1,15 +1,57 @@
 do
+   local string = string
+
    local util = require("minagi.util")
 
    return function(minagi)
       local configuration = minagi.configuration()
-
-      local is_real_screen = function(screen_configuration)
-         return screen_configuration.type == "real"
-      end
+      local counter = 1
 
       local is_virtual_screen = function(screen_configuration)
          return screen_configuration.type == "virtual"
+      end
+
+      local generate_output_name = function()
+         local output_name = string.format(
+            "VIRTUAL%d",
+            counter
+         )
+
+         counter = counter + 1
+
+         return output_name
+      end
+
+      -- Generates modeline.
+      -- Returns modeline and name of the modeline
+      local generate_modeline = function(width, height, refresh_rate)
+         local result
+         local name
+         local handler = io.popen(string.format("cvt %d %d %d",
+                                                width,
+                                                height,
+                                                refresh_rate))
+         if handler then
+            -- skip comment line
+            handler:read("*l")
+            -- skip "Modeline "
+            util.file.skip_word(handler)
+            -- result is anything other
+            result = handler:read("*a")
+            handler:close()
+         end
+
+         -- Remove
+         if result then
+            -- get string in ""
+            name   = result:match("\"[%w%s._]+\"")
+            name   = name:gsub("\"", "")
+
+            -- remove line-break characters
+            result = result:gsub("[\n]", "")
+         end
+
+         return result, name
       end
 
       local configure_virtual_screen = function(virtual_screen_configuration)
@@ -18,42 +60,30 @@ do
             return
          end
 
-         local command = string.format(
-         )
-      end
-
-      local configure_real_screen = function(real_screen_configuration)
-         if not is_real_screen(real_screen_configuration) then
-            error("Attempt to configure not real screen as real screen")
-            return
-         end
-
-         local command = string.format(
-            "xrandr --output %s --mode %dx%d --pos %dx%d --rotate normal ",
-            real_screen_configuration.name,
-            real_screen_configuration.width,
-            real_screen_configuration.height,
-            real_screen_configuration.start_x,
-            real_screen_configuration.start_y
+         local output_name = generate_output_name()
+         local modeline, modelabel = generate_modeline(
+            virtual_screen_configuration.width,
+            virtual_screen_configuration.height,
+            60
          )
 
+         -- Create mode
+         local command = string.format(
+            "xrandr --newmode %s && xrandr --addmode %s %s",
+            modeline,
+            output_name,
+            modelabel
+         )
          util.system.execute_cmd {
-            cmd = command
+            cmd = command,
+            wait = true
          }
       end
 
       local configure_screens = function()
          for _, screen_configuration in ipairs(configuration.screens) do
-            local screen_real_index = screen_configuration.screen_real_index
-
-            if minagi.screen.screen_exists(screen_real_index) then
-               if is_virtual_screen(screen_configuration) then
-                  configure_virtual_screen(screen_configuration)
-               else
-                  if is_real_screen(screen_configuration) then
-                     configure_real_screen(screen_configuration)
-                  end
-               end
+            if is_virtual_screen(screen_configuration) then
+               configure_virtual_screen(screen_configuration)
             end
          end
       end

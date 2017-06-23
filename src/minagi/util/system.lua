@@ -58,14 +58,14 @@ do
 
       local _cmd  = _options.cmd  or error("Can't execute nil command")
       local _args = _options.args or ""
-      local _wait = _options.wait or false -- todo: use it
-      local cmd
+      local _wait = _options.wait or false
+      local cmd = _cmd .. " " .. _args
 
-      if _args:len() == 0 then
-         cmd = _cmd
-         awful.spawn(cmd)
+      if _wait then
+         local handler = io.popen(cmd)
+         handler:read("*a")
+         handler:close()
       else
-         cmd = _cmd .. " " .. _args
          awful.util.spawn_with_shell(cmd)
       end
    end
