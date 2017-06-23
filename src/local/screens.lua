@@ -40,6 +40,7 @@ return {
    },
    {
       type                = "virtual",
+      name                = "VIRTUAL1",
       password            = "19801308qqq",
       port                = 5900,
       start_x             = 5760,
@@ -54,6 +55,7 @@ return {
    },
    {
       type                = "virtual",
+      name                = "VIRTUAL2",
       password            = "19801308qqq",
       port                = 5901,
       start_x             = 3840,
