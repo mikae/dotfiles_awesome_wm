@@ -7,9 +7,9 @@ return {
       width               = 1920,
       height              = 1080,
       screen_real_index   = 3,
-      screen_top_index    = 5,
+      screen_top_index    = 1,
       screen_right_index  = 2,
-      screen_bottom_index = 5,
+      screen_bottom_index = 1,
       screen_left_index   = 4
    },
    {
@@ -35,7 +35,7 @@ return {
       screen_real_index   = 2,
       screen_top_index    = 6,
       screen_right_index  = 4,
-      screen_bottom_index = 6,
+      screen_bottom_index = 5,
       screen_left_index   = 2
    },
    {
