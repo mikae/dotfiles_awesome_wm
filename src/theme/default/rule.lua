@@ -66,9 +66,23 @@ do
       }
    end
 
+   local add_qemu_rules = function(minagi)
+      minagi.rule.add {
+         rule_any = {
+            class = {
+               "Qemu-system-x86_64"
+            }
+         },
+         properties = {
+            floating = true
+         }
+      }
+   end
+
    return function(minagi)
       minagi.target.add("conf.rules", add_default_rule)
       minagi.target.add("conf.rules", add_floating_rule)
       minagi.target.add("conf.rules", add_firefox_rules)
+      minagi.target.add("conf.rules", add_qemu_rules)
    end
 end
