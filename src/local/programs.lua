@@ -2,7 +2,7 @@ return {
    {
       name = "firefox",
       cmd = {
-         cmd = "firefox-bin",
+         cmd = "firefox",
          args = "",
          wait = false
       },
