@@ -1,6 +1,5 @@
 return {
-   user_name = "nitori",
-   theme_name = "red_magic",
+   user_name = "yui",
    keyboard = {
       repeat_rate = 100,
       delay = 200

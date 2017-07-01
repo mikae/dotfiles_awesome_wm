@@ -7,7 +7,7 @@ do
    local util   = require("minagi.util")
    local widget = require("minagi.widget")
 
-   -- default style
+   -- Default style
    local default_style = function()
       return {
          c = {
@@ -23,21 +23,18 @@ do
       }
    end
 
-   -- clock widget
+   -- Clock widget
    local clock = {
       mt = {}
    }
 
-   -- constructor
+   -- Constructor
    local new = function(options, preferred_style)
-      -- style
+      -- Style
       local style = util.table.merge(default_style(), preferred_style or {})
 
-      -- options
+      -- Options
       local _options = options or {}
-
-      local _separator_left   = _options.separator_left  or ""
-      local _separator_right  = _options.separator_right or " "
 
       local _time_format      = _options.time_format     or "%H:%M"
       local _update_interval  = _options.update_interval or 1
@@ -49,22 +46,6 @@ do
             bg = style.c.bg
          }
       }.widget
-
-      local sepl = widget.common.textbox{
-         c = {
-            fg = style.c.fg,
-            bg = style.c.bg,
-         }
-      }.widget
-      sepl:text(_separator_left)
-
-      local sepr = widget.common.textbox({
-         c = {
-            fg = style.c.fg,
-            bg = style.c.bg,
-         }
-      }).widget
-      sepl:text(_separator_right)
 
       local container = wibox.container.margin(
          textbox,
@@ -83,10 +64,10 @@ do
 
       -- Widget definition
       local widget_definition = {
-         widget = nil,
-         update_function = update_function,
-         keys = {},
-         timer_definitions = {},
+         widget            = container,
+         update_function   = update_function,
+         keys              = {},
+         timer_definitions = {}
       }
 
       -- Timer definition
@@ -99,14 +80,6 @@ do
             timeout   = _update_interval
          }
       )
-
-      -- Widget creation
-      widget_definition.widget = {
-         sepl,
-         container,
-         sepr,
-         layout = wibox.layout.fixed.horizontal
-      }
 
       return widget_definition
    end

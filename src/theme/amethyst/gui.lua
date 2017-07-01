@@ -97,6 +97,11 @@ do
       minagi.gui.add_shared(cl)
    end
 
+   local add_systray_widget = function(minagi)
+      local systray = widget.systray()
+      minagi.gui.add_shared(systray)
+   end
+
    local add_wibox = function(minagi)
       awful.screen.connect_for_each_screen(
          function(s)
@@ -218,6 +223,7 @@ do
 
       minagi.target.add("conf.gui", add_clock_widget)
       minagi.target.add("conf.gui", add_volume_widget)
+      minagi.target.add("conf.gui", add_systray_widget)
 
       minagi.target.add("conf.gui", add_wibox)
    end

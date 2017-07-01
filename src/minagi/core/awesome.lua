@@ -1,7 +1,6 @@
 do
    local unpack = _G.unpack or table.unpack
 
-   local awesome = require("awesome")
    local awful = require("awful")
 
    return function(minagi)
