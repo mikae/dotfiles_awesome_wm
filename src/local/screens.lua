@@ -61,7 +61,7 @@ return {
       start_x             = 1920,
       start_y             = 1080,
       width               = 1280,
-      height              = 800,
+      height              = 736,
       screen_real_index   = 5,
       screen_top_index    = 2,
       screen_right_index  = 6,
@@ -82,5 +82,5 @@ return {
       screen_right_index  = 5,
       screen_bottom_index = 2,
       screen_left_index   = 5
-   }
+   },
 }

@@ -1,6 +1,6 @@
 return {
    {
-      name = "firefox",
+      name = "Firefox",
       cmd = {
          cmd = "firefox",
          args = "",
@@ -9,21 +9,21 @@ return {
       keystroke = "s-H-b"
    },
    {
-      name = "google-chrome",
-      cmd = {
-         cmd  = "google-chrome-stable",
-         args = "",
-         wait = false
-      },
-      keystroke = "s-H-S-b"
-   },
-   {
-      name = "emacs",
+      name = "GNU Emacs",
       cmd = {
          cmd  = "emacs",
          args = "",
          wait = false
       },
       keystroke = "s-H-e"
+   },
+   {
+      name = "Virtual Box",
+      cmd = {
+         cmd  = "VirtualBox",
+         args = "",
+         wait = false
+      },
+      keystroke = "s-H-v"
    },
 }

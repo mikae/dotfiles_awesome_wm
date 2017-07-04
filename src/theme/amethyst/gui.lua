@@ -223,7 +223,7 @@ do
 
       minagi.target.add("conf.gui", add_clock_widget)
       minagi.target.add("conf.gui", add_volume_widget)
-      minagi.target.add("conf.gui", add_systray_widget)
+      -- minagi.target.add("conf.gui", add_systray_widget)
 
       minagi.target.add("conf.gui", add_wibox)
    end
