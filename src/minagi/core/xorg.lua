@@ -92,12 +92,12 @@ do
             wait = true
          }
          vnc.create {
-            start_x = virtual_screen_configuration.start_x,
-            start_y = virtual_screen_configuration.start_y,
-            width = virtual_screen_configuration.width,
-            height = virtual_screen_configuration.height,
+            start_x  = virtual_screen_configuration.start_x,
+            start_y  = virtual_screen_configuration.start_y,
+            width    = virtual_screen_configuration.width,
+            height   = virtual_screen_configuration.height,
             password = virtual_screen_configuration.password,
-            port = virtual_screen_configuration.port
+            port     = virtual_screen_configuration.port
          }
       end
 
