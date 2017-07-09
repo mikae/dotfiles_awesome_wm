@@ -35,35 +35,49 @@ do
    end
 
    local add_firefox_rules = function(minagi)
-      minagi.rule.add {
-         rule_any = {
-            class = {
-               "Firefox",
+      local inner = function(class_name)
+         minagi.rule.add {
+            rule_any = {
+               class = {
+                  class_name,
+               },
             },
-         },
-         properties = {
-            floating = false,
-            maximized = false,
+            properties = {
+               floating = false,
+               maximized = false,
+            }
          }
-      }
-      minagi.rule.add {
-         rule = {
-            class = "Firefox",
-            instance = "DTA"
-         },
-         properties = {
-            floating = true
+         minagi.rule.add {
+            rule = {
+               class = class_name,
+               instance = "DTA"
+            },
+            properties = {
+               floating = true
+            }
          }
-      }
-      minagi.rule.add {
-         rule = {
-            class = "Firefox",
-            name = "DownThemAll! - Make Your Selection"
-         },
-         properties = {
-            floating = true
+         minagi.rule.add {
+            rule = {
+               class = class_name,
+               name = "DownThemAll! - Make Your Selection"
+            },
+            properties = {
+               floating = true
+            }
          }
-      }
+         minagi.rule.add {
+            rule = {
+               class = class_name,
+               name = "Choose a color"
+            },
+            properties = {
+               floating = true
+            }
+         }
+      end
+
+      inner("Firefox")
+      inner("Firefox-esr")
    end
 
    local add_qemu_rules = function(minagi)
