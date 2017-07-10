@@ -59,6 +59,15 @@ do
          minagi.rule.add {
             rule = {
                class = class_name,
+               instance = "Dialog"
+            },
+            properties = {
+               floating = true
+            }
+         }
+         minagi.rule.add {
+            rule = {
+               class = class_name,
                name = "DownThemAll! - Make Your Selection"
             },
             properties = {
@@ -69,6 +78,24 @@ do
             rule = {
                class = class_name,
                name = "Choose a color"
+            },
+            properties = {
+               floating = true
+            }
+         }
+         minagi.rule.add {
+            rule = {
+               class = class_name,
+               name = "Enter name of file to save to…"
+            },
+            properties = {
+               floating = true
+            }
+         }
+         minagi.rule.add {
+            rule = {
+               class = class_name,
+               name = "Save Image"
             },
             properties = {
                floating = true
