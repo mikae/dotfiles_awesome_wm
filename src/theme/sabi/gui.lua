@@ -38,8 +38,20 @@ do
 
       minagi.gui.add_desktop(
          1,
-         minagi.screen.width(1) - 320, minagi.screen.height(1) - 320,
+         minagi.screen.width(2) - 320, minagi.screen.height(2) - 320,
          350, 350,
+         im
+      )
+   end
+
+   local add_grin_1_image = function(minagi)
+      local im = widget.common.imagebox({})
+      im.widget:image(minagi.theme.image(theme_name, "grin_1.jpg"))
+
+      minagi.gui.add_desktop(
+         2,
+         minagi.screen.width(2) - 800, minagi.screen.height(2) - 800,
+         256, 256,
          im
       )
    end
@@ -230,6 +242,7 @@ do
       minagi.target.add("conf.gui", set_wallpapers)
 
       minagi.target.add("conf.gui", add_mouth_image)
+      minagi.target.add("conf.gui", add_grin_1_image)
       minagi.target.add("conf.gui", add_blood_image)
       minagi.target.add("conf.gui", add_cpu_widget)
 

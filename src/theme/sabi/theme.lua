@@ -1,10 +1,10 @@
 do
    local theme_name = "sabi"
 
-   local check_prerequisites = function(_)
-      --if minagi.screen.screen_count() < 2 then
-         --return nil, "Sabi requires > 1 screen"
-      --end
+   local check_prerequisites = function(minagi)
+      if minagi.screen.screen_count() < 2 then
+         return nil, "Sabi requires > 1 screen"
+      end
 
       return true
    end

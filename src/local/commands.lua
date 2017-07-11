@@ -14,7 +14,6 @@ return {
       cmd  = "reboot",
       args = "",
       wait = false
-
    },
    screenshoot_window = {
       cmd  = "xfce4-screenshooter",

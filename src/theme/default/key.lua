@@ -156,7 +156,16 @@ do
          util.key.key(
             "C-A-Delete",
             util.system.create_executor(configuration.commands.lock)
+         ),
+         util.key.key(
+            "Print",
+            util.system.create_executor(configuration.commands.screenshoot_window)
+         ),
+         util.key.key(
+            "S-Print",
+            util.system.create_executor(configuration.commands.screenshoot_screen)
          )
+
       }
    end
 
