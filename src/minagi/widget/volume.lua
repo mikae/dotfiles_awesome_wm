@@ -110,7 +110,7 @@ do
       end
 
       local volume_mute = function()
-         local cmd = "amixer -q -D pulse sset " .. _channel .. " toggle"
+         local cmd = "amixer set " .. _channel .. " toggle"
          local h = io.popen(cmd)
          h:read("*all")
          h:close()

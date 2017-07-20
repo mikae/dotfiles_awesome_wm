@@ -9,6 +9,7 @@ local minagi = require("minagi.minagi") {
 
 -- use target theme
 -- minagi.theme.load("default")
-minagi.theme.load("sabi")
+-- minagi.theme.load("sabi")
+minagi.theme.load("amethyst")
 
 minagi.target.execute()

@@ -56,6 +56,18 @@ do
       )
    end
 
+   local add_grin_2_image = function(minagi)
+      local im = widget.common.imagebox({})
+      im.widget:image(minagi.theme.image(theme_name, "grin_2.png"))
+
+      minagi.gui.add_desktop(
+         3,
+         minagi.screen.width(3) - 1200, minagi.screen.height(3) - 300,
+         475, 267,
+         im
+      )
+   end
+
    local add_blood_image = function(minagi)
       local svg = widget.common.svgbox({})
       svg.widget:image(minagi.theme.image(theme_name, "blood.svg"))
@@ -243,6 +255,7 @@ do
 
       minagi.target.add("conf.gui", add_mouth_image)
       minagi.target.add("conf.gui", add_grin_1_image)
+      minagi.target.add("conf.gui", add_grin_2_image)
       minagi.target.add("conf.gui", add_blood_image)
       minagi.target.add("conf.gui", add_cpu_widget)
 
