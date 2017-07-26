@@ -101,6 +101,15 @@ do
                floating = true
             }
          }
+         minagi.rule.add {
+            rule = {
+               class = class_name,
+               name = "Add Downloads"
+            },
+            properties = {
+               floating = true
+            }
+         }
       end
 
       inner("Firefox")

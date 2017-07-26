@@ -10,7 +10,7 @@ do
 
       local theme = {}
 
-      theme.load = function(theme_name)
+      theme.load = function(theme_name, style)
          if loaded_themes[theme_name] then
             util.log.glog("Theme \"%s\" was already loaded", theme_name)
             return nil
@@ -34,6 +34,8 @@ do
 
          local p = path.join(theme_dir, "theme.lua")
          local loaded_theme = dofile(p)
+         local result_style = util.table.merge(loaded_theme.style or {},
+                                               style or {})
 
          local result, msg = loaded_theme.check_prerequisites(minagi)
 
@@ -47,11 +49,11 @@ do
          util.table.forind(
             loaded_theme.dependencies,
             function(dependency)
-               theme.load(dependency)
+               theme.load(dependency, result_style)
             end
          )
 
-         loaded_theme.execute(minagi)
+         loaded_theme.execute(minagi, result_style)
 
          loaded_themes[theme_name] = true
          return true

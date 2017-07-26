@@ -55,10 +55,8 @@ do
       widget_definition.update_function = function()
          -- todo: find out what this line is doing
          local usage = tonumber(vicious.call(vicious.widgets.cpu, "$" .. (data.cpu_index + 1)))
-
          data.usage = usage
          widget_definition.widget:emit_signal("property::usage", usage)
-
          widget_definition.widget:v(usage)
       end
 
@@ -69,7 +67,7 @@ do
             name      = "cpu_usage_" .. counter,
             autostart = true,
             callback  = widget_definition.update_function,
-            timeout   = 1
+            timeout   = 5
          }
       )
 

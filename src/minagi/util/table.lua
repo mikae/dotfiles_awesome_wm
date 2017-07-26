@@ -7,8 +7,6 @@ do
    local table  = table
    local error = error
 
-   local util = require("minagi.util")
-
    local forkey = function(tbl, func)
       if type(tbl) ~= "table" then
          error("Attempt iterating nontables")

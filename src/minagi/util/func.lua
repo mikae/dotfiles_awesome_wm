@@ -1,8 +1,6 @@
 do
    local unpack = _G.unpack or table.unpack
 
-   local util = require("minagi.util")
-
    local create_comparator = function(property, value)
       return function(t)
          return t[property] == value
@@ -25,6 +23,12 @@ do
       end
    end
 
+   local _for = function(from, to, func)
+      for i = from, to do
+         func(i)
+      end
+   end
+
    local void = function()
    end
 
@@ -33,6 +37,7 @@ do
       bind              = bind,
       id                = id,
       timer             = times,
-      void              = void
+      void              = void,
+      _for              = _for
    }
 end
