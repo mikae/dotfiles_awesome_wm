@@ -74,10 +74,14 @@ do
 
    system.change_xkb_layout = function(layout)
       local cmd = string.format(
-         "setxkbmap %s -variant %s",
-         layout[2],
-         layout[3]
+         "setxkbmap %s",
+         layout[2]
       )
+
+      if layout[3] then
+         cmd = cmd .. string.format(" %s", layout[3])
+      end
+
       util.system.execute_cmd {
          cmd = cmd
       }

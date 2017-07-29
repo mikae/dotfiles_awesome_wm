@@ -4,9 +4,9 @@ return {
       repeat_rate = 100,
       delay = 200,
       layouts = {
-         { "col", "en", "basic"   },
-         { "en",  "en", "colemak" },
-         { "ru",  "ru", "basic"   }
+         { "en",  "us", "basic"   },
+         { "col", "us", "colemak" },
+         { "ru",  "ru", nil       }
       }
    }
 }
