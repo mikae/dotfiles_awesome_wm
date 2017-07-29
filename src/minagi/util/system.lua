@@ -84,7 +84,7 @@ do
    end
 
    system.create_executor = function(options)
-      return util.func.bind(execute_cmd, {options})
+      return util.func.bind(system.execute_cmd, {options})
    end
 
    system.cmd_result = function(cmd)
