@@ -6,15 +6,13 @@ do
    local table        = table
 
    local wibox     = require("wibox")
-
    local util      = require("minagi.util")
-
    local widget    = require("minagi.widget")
 
-   -- widget
+   -- Widget
    local volume = { mt = {}}
 
-   -- default style
+   -- Default style
    local default_style = function()
       return {
          c = {
@@ -25,16 +23,14 @@ do
    end
 
    local new = function(options, preferred_style)
-      -- style
+      -- Style
       local style = util.table.merge(default_style(), preferred_style or {})
 
-      -- options
+      -- Options
       local _options = options or {}
 
       local _channel          = _options.channel             or "Master"
       local _step             = _options.step                or "5%"
-      local _separator_left   = _options.separator_left      or ""
-      local _separator_right  = _options.separator_right     or " "
       local _update_interval  = _options.update_interval     or 1
 
       local _key_volume_up    = _options.key_volume_up       or util.constants.keys.volume_up
@@ -43,9 +39,9 @@ do
 
       local _button_volume_up    = _options.key_volume_up    or util.constants.keys.button_4
       local _button_volume_down  = _options.key_volume_down  or util.constants.keys.button_5
-      local _button_volume_mute  = _options.key_volume_mte   or util.constants.keys.button_1
+      local _button_volume_mute  = _options.key_volume_mute  or util.constants.keys.button_1
 
-      -- widgets
+      -- Widgets
       local pb = widget.common.progressbar {
          w = 40,
          style = "rounded",
@@ -60,23 +56,7 @@ do
          }
       }.widget
 
-      local sepl = widget.common.textbox{
-         c = {
-            fg = style.c.fg,
-            bg = style.c.bg,
-         }
-      }.widget
-      sepl:text(_separator_left)
-
-      local sepr = widget.common.textbox({
-         c = {
-            fg = style.c.fg,
-            bg = style.c.bg,
-         }
-      }).widget
-      sepl:text(_separator_right)
-
-      -- functions
+      -- Functions
       local update_function = function()
          local fd = io.popen("amixer sget " .. _channel)
          local status = fd:read("*all")
@@ -93,32 +73,32 @@ do
 
       local volume_up = function()
          local cmd = "amixer set " .. _channel .. " " .. _step .. "+"
-         local h = io.popen(cmd)
-         h:read("*all")
-         h:close()
+         util.system.execute_cmd {
+            cmd = cmd
+         }
 
          update_function()
       end
 
       local volume_down = function()
          local cmd = "amixer set " .. _channel .. " " .. _step .. "-"
-         local h = io.popen(cmd)
-         h:read("*all")
-         h:close()
+         util.system.execute_cmd {
+            cmd = cmd
+         }
 
          update_function()
       end
 
       local volume_mute = function()
          local cmd = "amixer set " .. _channel .. " toggle"
-         local h = io.popen(cmd)
-         h:read("*all")
-         h:close()
+         util.system.execute_cmd {
+            cmd = cmd
+         }
 
          update_function()
       end
 
-      -- widget definition
+      -- Widget definition
       local widget_definition = {
          update_function   = update_function,
          timer_definitions = {},
@@ -126,7 +106,7 @@ do
          widget            = nil
       }
 
-      -- timer definition
+      -- Timer definition
       table.insert(
          widget_definition.timer_definitions,
          {
@@ -137,29 +117,25 @@ do
          }
       )
 
-      -- key definitions
+      -- Key definitions
       widget_definition.keys = util.key.join {
          util.key.key(_key_volume_up,   volume_up),
          util.key.key(_key_volume_down, volume_down),
          util.key.key(_key_volume_mute, volume_mute)
       }
 
-      -- buttons
+      -- Buttons
       local buttons = util.key.join (
          util.key.button(_button_volume_up,   volume_up),
          util.key.button(_button_volume_down, volume_down),
          util.key.button(_button_volume_mute, volume_mute)
       )
 
-      sepl:buttons(buttons)
       pb:buttons(buttons)
-      sepr:buttons(buttons)
 
-      -- widget creation
+      -- Widget creation
       widget_definition.widget = {
-         sepl,
          pb,
-         sepr,
          layout = wibox.layout.fixed.horizontal
       }
 

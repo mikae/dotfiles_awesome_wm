@@ -1,12 +1,14 @@
 do
    local string = string
-   local io = io
+   local io     = io
 
    local awful = require("awful")
+   local util  = require("minagi.util")
 
-   local util = require("minagi.util")
+   -- System
+   local system = {}
 
-   local run_program = function(program_configuration)
+   system.run_program = function(program_configuration)
       if not program_configuration then
          return nil
       end
@@ -43,7 +45,7 @@ do
       awful.util.spawn_with_shell(cmd)
    end
 
-   local kill_process = function(process_filter)
+   system.kill_process = function(process_filter)
       if not process_filter then
          return nil
       end
@@ -53,7 +55,7 @@ do
       awful.util.spawn_with_shell(cmd)
    end
 
-   local execute_cmd = function(options)
+   system.execute_cmd = function(options)
       local _options = options or {}
 
       local _cmd  = _options.cmd  or error("Can't execute nil command")
@@ -70,11 +72,22 @@ do
       end
    end
 
-   local create_executor = function(options)
+   system.change_xkb_layout = function(layout)
+      local cmd = string.format(
+         "setxkbmap %s -variant %s",
+         layout[2],
+         layout[3]
+      )
+      util.system.execute_cmd {
+         cmd = cmd
+      }
+   end
+
+   system.create_executor = function(options)
       return util.func.bind(execute_cmd, {options})
    end
 
-   local cmd_result = function(cmd)
+   system.cmd_result = function(cmd)
       local handler = assert(io.popen(cmd, "r"))
       local result  = assert(handler:read("*a"))
 
@@ -83,11 +96,5 @@ do
       return result
    end
 
-   return {
-      run_program = run_program,
-      kill_process = kill_process,
-      execute_cmd = execute_cmd,
-      create_executor = create_executor,
-      cmd_result = cmd_result
-   }
+   return system
 end

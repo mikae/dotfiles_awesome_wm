@@ -4,9 +4,10 @@ do
 
    local widget = require("minagi.widget")
    local util   = require("minagi.util")
-   local vicious = require("vicious")
 
    return function(minagi, style)
+      local configuration = minagi.configuration()
+
       local add_cpu_widget = function(_)
          for i=1, util.cpu.count() do
             local cpu_widget = widget.cpu_usage {
@@ -55,6 +56,26 @@ do
             }
          )
          minagi.gui.add_shared(cl)
+      end
+
+      local add_keyboard_layout_widget = function(_)
+         local klw = widget.keyboard_layout(
+            {
+               layouts = configuration.options.keyboard.layouts
+            },
+            {
+               c = {
+                  fg = style.c.fg_def,
+                  bg = style.c.bg_2
+               },
+               p = {
+                  t = 3,
+                  r = 5,
+                  l = 5
+               }
+            }
+         )
+         minagi.gui.add_shared(klw)
       end
 
       local add_wibox = function(_)
@@ -172,6 +193,7 @@ do
 
       minagi.target.add("conf.gui", add_cpu_widget)
 
+      minagi.target.add("conf.gui", add_keyboard_layout_widget)
       minagi.target.add("conf.gui", add_clock_widget)
       minagi.target.add("conf.gui", add_volume_widget)
 
