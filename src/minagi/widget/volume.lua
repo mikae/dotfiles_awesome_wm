@@ -74,7 +74,8 @@ do
       local volume_up = function()
          local cmd = "amixer set " .. _channel .. " " .. _step .. "+"
          util.system.execute_cmd {
-            cmd = cmd
+            cmd = cmd,
+            wait = true
          }
 
          update_function()
@@ -83,7 +84,8 @@ do
       local volume_down = function()
          local cmd = "amixer set " .. _channel .. " " .. _step .. "-"
          util.system.execute_cmd {
-            cmd = cmd
+            cmd = cmd,
+            wait = true
          }
 
          update_function()
@@ -92,7 +94,8 @@ do
       local volume_mute = function()
          local cmd = "amixer set " .. _channel .. " toggle"
          util.system.execute_cmd {
-            cmd = cmd
+            cmd = cmd,
+            wait = true
          }
 
          update_function()
