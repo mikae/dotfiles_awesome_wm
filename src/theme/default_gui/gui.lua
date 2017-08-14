@@ -8,26 +8,30 @@ do
    return function(minagi, style)
       local configuration = minagi.configuration()
 
-      local add_cpu_widget = function(_)
-         for i=1, util.cpu.count() do
-            local cpu_widget = widget.cpu_usage {
-               c = {
-                  bg     = style.c.bg_1,
-                  fg     = style.c.fg_sel,
-                  shadow = style.c.shadow
+      local add_cpu_widget
+
+      if style.add_cpu_widgets then
+         add_cpu_widget = function(_)
+            for i=1, util.cpu.count() do
+               local cpu_widget = widget.cpu_usage {
+                  c = {
+                     bg     = style.c.bg_1,
+                     fg     = style.c.fg_sel,
+                     shadow = style.c.shadow
+                  }
                }
-            }
-            cpu_widget.widget:cpu_index(i)
+               cpu_widget.widget:cpu_index(i)
 
-            cpu_widget.widget:bg(style.c.bg_1)
-            cpu_widget.widget:shadow(style.c.shadow)
+               cpu_widget.widget:bg(style.c.bg_1)
+               cpu_widget.widget:shadow(style.c.shadow)
 
-            minagi.gui.add_desktop(
-               1,
-               30 * (i - 1), 0,
-               30, 75,
-               cpu_widget
-            )
+               minagi.gui.add_desktop(
+                  1,
+                  30 * (i - 1), 0,
+                  30, 75,
+                  cpu_widget
+               )
+            end
          end
       end
 
@@ -191,7 +195,9 @@ do
          )
       end
 
-      minagi.target.add("conf.gui", add_cpu_widget)
+      if style.add_cpu_widgets then
+         minagi.target.add("conf.gui", add_cpu_widget)
+      end
 
       minagi.target.add("conf.gui", add_keyboard_layout_widget)
       minagi.target.add("conf.gui", add_clock_widget)
