@@ -38,36 +38,36 @@ return {
       screen_bottom_index = 3,
       screen_left_index   = 2
    },
-   {
-      type                = "virtual",
-      name                = "VIRTUAL1",
-      password            = "19801308qqq",
-      port                = 5900,
-      start_x             = 5760,
-      start_y             = 0,
-      width               = 1280,
-      height              = 1024,
-      screen_real_index   = 4,
-      screen_top_index    = 4,
-      screen_right_index  = 1,
-      screen_bottom_index = 4,
-      screen_left_index   = 3
-   },
-   {
-      type                = "virtual",
-      name                = "VIRTUAL2",
-      password            = "19801308qqq",
-      port                = 5901,
-      start_x             = 0,
-      start_y             = 1080,
-      width               = 1280,
-      height              = 736,
-      screen_real_index   = 5,
-      screen_top_index    = 1,
-      screen_right_index  = 5,
-      screen_bottom_index = 1,
-      screen_left_index   = 5
-   }
+   -- {
+   --    type                = "virtual",
+   --    name                = "VIRTUAL1",
+   --    password            = "19801308qqq",
+   --    port                = 5900,
+   --    start_x             = 5760,
+   --    start_y             = 0,
+   --    width               = 1280,
+   --    height              = 1024,
+   --    screen_real_index   = 4,
+   --    screen_top_index    = 4,
+   --    screen_right_index  = 1,
+   --    screen_bottom_index = 4,
+   --    screen_left_index   = 3
+   -- },
+   -- {
+   --    type                = "virtual",
+   --    name                = "VIRTUAL2",
+   --    password            = "19801308qqq",
+   --    port                = 5901,
+   --    start_x             = 0,
+   --    start_y             = 1080,
+   --    width               = 1280,
+   --    height              = 736,
+   --    screen_real_index   = 5,
+   --    screen_top_index    = 1,
+   --    screen_right_index  = 5,
+   --    screen_bottom_index = 1,
+   --    screen_left_index   = 5
+   -- }
    -- {
    --    type                = "virtual",
    --    name                = "VIRTUAL3",

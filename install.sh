@@ -29,19 +29,12 @@ config_clean () {
 config_install () {
     mkdir $DESTINATION_DIR
     mkdir -p $DESTINATION_DIR/.state
-    for f in $(find $CONFIG_SRC -type f); do
-        case $f in
-            *)
-                relative_name=`realpath --relative-to="$CONFIG_SRC" "$f"`
-                source_path=$CONFIG_SRC/$relative_name
-                destination_path=$DESTINATION_DIR/$relative_name
-                destination_dir="$(dirname $destination_path)"
 
-                [ ! -d $destination_dir ] && mkdir -p $destination_dir
-                cp -v $source_path $destination_path
-                ;;
-        esac
-    done
+    cp -Rv $CONFIG_SRC/.state $DESTINATION_DIR
+    cp -Rv $CONFIG_SRC/minagi $DESTINATION_DIR
+    cp -Rv $CONFIG_SRC/theme  $DESTINATION_DIR
+    cp -Rv $CONFIG_SRC/rc.lua $DESTINATION_DIR
+    [ ! -d $DESTINATION_DIR/local ] && cp -Rv $CONFIG_SRC/local $DESTINATION_DIR
 
     # Install user-local files
     cp -v $CONFIG_DIR/.xinitrc ~/.xinitrc
@@ -62,16 +55,16 @@ do
     case $key in
         --clean)
             CLEAN=true
-        ;;
+            ;;
 
         --install)
             INSTALL=true
-        ;;
+            ;;
 
         --all)
             CLEAN=true
             INSTALL=true
-        ;;
+            ;;
     esac
 
     shift
