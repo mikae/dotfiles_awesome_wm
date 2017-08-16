@@ -70,6 +70,7 @@ do
          local layout = _layouts[data.selected]
          local text   = layout[1]
          textbox:text(text)
+         util.system.change_xkb_layout(_layouts[data.selected])
       end
 
       local next_layout = function()
@@ -80,7 +81,6 @@ do
             data.selected = data.selected + 1
          end
 
-         util.system.change_xkb_layout(_layouts[data.selected])
          update_function()
       end
 
@@ -91,8 +91,6 @@ do
          else
             data.selected = data.selected - 1
          end
-
-         util.system.change_xkb_layout(_layouts[data.selected])
          update_function()
       end
 
