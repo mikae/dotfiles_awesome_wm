@@ -11,8 +11,8 @@ do
          util.key.key("s-A-d",   minagi.tag.delete_tag_by_name_prompted),
          util.key.key("s-A-S-d", minagi.tag.delete_tag),
 
-         util.key.key("s-A-l",   minagi.tag.focus_next),
-         util.key.key("s-A-h",   minagi.tag.focus_previous),
+         util.key.key("s-A-o",   minagi.tag.focus_next),
+         util.key.key("s-A-n",   minagi.tag.focus_previous),
 
          util.key.key("s-A-f",   minagi.tag.focus_tag_by_index_prompted),
          util.key.key("s-A-S-f", minagi.tag.focus_tag_by_name_prompted),
@@ -31,10 +31,10 @@ do
 
    local add_screen_keys = function(minagi)
       minagi.key.append_keys {
-         util.key.key("s-C-k",   minagi.screen.focus_top),
-         util.key.key("s-C-l",   minagi.screen.focus_right),
-         util.key.key("s-C-j",   minagi.screen.focus_bottom),
-         util.key.key("s-C-h",   minagi.screen.focus_left),
+         util.key.key("s-C-n",   minagi.screen.focus_left),
+         util.key.key("s-C-e",   minagi.screen.focus_bottom),
+         util.key.key("s-C-o",   minagi.screen.focus_right),
+         util.key.key("s-C-i",   minagi.screen.focus_top),
 
          util.key.key("s-C-1",   minagi.screen.focus_screen_1),
          util.key.key("s-C-2",   minagi.screen.focus_screen_2),
@@ -58,23 +58,23 @@ do
          util.key.key("s-m",     minagi.client.toggle_minimized),
          util.key.key("s-S-m",   minagi.client.toggle_maximized),
 
-         util.key.key("s-k",     minagi.client.focus_up),
-         util.key.key("s-l",     minagi.client.focus_right),
-         util.key.key("s-j",     minagi.client.focus_down),
-         util.key.key("s-h",     minagi.client.focus_left),
+         util.key.key("s-n",     minagi.client.focus_left),
+         util.key.key("s-e",     minagi.client.focus_down),
+         util.key.key("s-i",     minagi.client.focus_up),
+         util.key.key("s-o",     minagi.client.focus_right),
 
-         util.key.key("s-S-k",   minagi.client.swap_up),
-         util.key.key("s-S-l",   minagi.client.swap_right),
-         util.key.key("s-S-j",   minagi.client.swap_down),
-         util.key.key("s-S-h",   minagi.client.swap_left),
+         util.key.key("s-S-n",   minagi.client.swap_left),
+         util.key.key("s-S-e",   minagi.client.swap_right),
+         util.key.key("s-S-i",   minagi.client.swap_up),
+         util.key.key("s-S-o",   minagi.client.swap_down),
 
-         util.key.key("s-A-S-l", minagi.client.move_focused_client_to_right_tag),
-         util.key.key("s-A-S-h", minagi.client.move_focused_client_to_left_tag),
+         util.key.key("s-A-S-o", minagi.client.move_focused_client_to_right_tag),
+         util.key.key("s-A-S-n", minagi.client.move_focused_client_to_left_tag),
 
-         util.key.key("s-C-S-k", minagi.client.move_focused_client_to_top_screen),
-         util.key.key("s-C-S-l", minagi.client.move_focused_client_to_right_screen),
-         util.key.key("s-C-S-j", minagi.client.move_focused_client_to_bottom_screen),
-         util.key.key("s-C-S-h", minagi.client.move_focused_client_to_left_screen),
+         util.key.key("s-C-S-n", minagi.client.move_focused_client_to_left_screen),
+         util.key.key("s-C-S-e", minagi.client.move_focused_client_to_right_screen),
+         util.key.key("s-C-S-i", minagi.client.move_focused_client_to_top_screen),
+         util.key.key("s-C-S-o", minagi.client.move_focused_client_to_bottom_screen),
 
          util.key.key("s-C-S-f", minagi.client.move_focused_client_to_screen_prompted),
 
