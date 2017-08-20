@@ -4,7 +4,7 @@ do
    local add_tag_keys = function(minagi)
       minagi.key.append_keys {
          util.key.key(
-            "s-A-n",
+            "s-A-c",
             minagi.tag.register_tag_prompted
          ),
 
@@ -64,9 +64,9 @@ do
          util.key.key("s-o",     minagi.client.focus_right),
 
          util.key.key("s-S-n",   minagi.client.swap_left),
-         util.key.key("s-S-e",   minagi.client.swap_right),
+         util.key.key("s-S-e",   minagi.client.swap_down),
          util.key.key("s-S-i",   minagi.client.swap_up),
-         util.key.key("s-S-o",   minagi.client.swap_down),
+         util.key.key("s-S-o",   minagi.client.swap_right),
 
          util.key.key("s-A-S-o", minagi.client.move_focused_client_to_right_tag),
          util.key.key("s-A-S-n", minagi.client.move_focused_client_to_left_tag),
