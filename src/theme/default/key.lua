@@ -112,25 +112,29 @@ do
          }
       end
 
-      -- terminal
       minagi.key.append_keys {
-         util.key.key(
+       -- terminal
+        util.key.key(
             "s-Return",
             util.system.create_executor(configuration.commands.terminal)
          ),
-         -- bug: meta combinations invoked twice
-         util.key.key(
-            "s-M-e",
-            function()
-               util.log.glog("s-M-E")
-            end
-         ),
-         util.key.key(
-            "s-m-e",
-            function()
-               util.log.glog("s-m-E")
-            end
-         )
+        util.key.key(
+           "s-Delete",
+           util.system.create_executor(configuration.commands.screenlocker)
+        ),
+        -- bug: meta combinations invoked twice
+        util.key.key(
+           "s-M-e",
+           function()
+              util.log.glog("s-M-E")
+           end
+        ),
+        util.key.key(
+           "s-m-e",
+           function()
+              util.log.glog("s-m-E")
+           end
+        )
       }
    end
 

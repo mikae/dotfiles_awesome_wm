@@ -1,17 +1,17 @@
 return {
-   terminal           = {
+   terminal = {
       cmd  = "urxvt",
       args = "",
       wait = false
    },
-   shutdown           = {
-      cmd  = "poweroff",
+   shutdown = {
+      cmd  = "systemctl poweroff",
       args = "",
       wait = false
 
    },
-   reboot             = {
-      cmd  = "reboot",
+   reboot = {
+      cmd  = "systemctl reboot",
       args = "",
       wait = false
    },
@@ -25,7 +25,7 @@ return {
       args = "-f",
       wait = false
    },
-   lock = {
+   screenlocker = {
       cmd  = "slock",
       args = "",
       wait = false
