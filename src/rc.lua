@@ -11,6 +11,7 @@ local minagi = require("minagi.minagi") {
 -- minagi.theme.load("default")
 -- minagi.theme.load("sabi")
 -- minagi.theme.load("amethyst")
-minagi.theme.load("tokyo")
+-- minagi.theme.load("tokyo")
+minagi.theme.load("inf")
 
 minagi.target.execute()
